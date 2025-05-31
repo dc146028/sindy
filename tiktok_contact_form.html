@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>שליחת פנייה ל-TikTok</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background-color: #f0f0f0; direction: rtl; text-align: right; }
+    h1 { color: #222; }
+    select, input, button { width: 100%; padding: 10px; margin-top: 10px; font-size: 16px; }
+    button { background-color: #1c87c9; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #105e8b; }
+  </style>
+</head>
+<body>
+  <h1>פניה מהירה ל-TikTok</h1>
+  <input type="email" id="email" placeholder="המייל שלך" value="sindyedri22@gmail.com">
+  <select id="topic">
+    <option value="live">בעיה בשידור חי</option>
+    <option value="ban">חסימת חשבון</option>
+    <option value="general">פניה כללית</option>
+  </select>
+  <button onclick="sendEmail()">שלח פנייה</button>
+
+  <script>
+    function sendEmail() {
+      const email = document.getElementById('email').value;
+      const topic = document.getElementById('topic').value;
+
+      const recipients = [
+        "feedback@tiktok.com", "privacy@tiktok.com", "legal@tiktok.com", "security@tiktok.com",
+        "livestream@tiktok.com", "info@tiktok.com", "ads@tiktok.com", "business-servicesupport@tiktok.com",
+        "advertiser-support@tiktok.com", "pr@tiktok.com", "creator-marketplace-support@tiktok.com",
+        "support@tiktok.com", "enforcement@tiktok.com", "helpdesk@tiktok.com", "appeals@tiktok.com",
+        "report@tiktok.com", "rights@tiktok.com", "copyright@tiktok.com", "trustandsafety@tiktok.com",
+        "account@tiktok.com"
+      ];
+
+      let subject = "";
+      let body = "";
+
+      if (topic === "live") {
+        subject = "בעיה בשידור חי - TikTok";
+        body = `שלום צוות TikTok,\n\nאני חווה בעיה בשידור החי בחשבוני.\n\nשם משתמש: sindyedri22\nאימייל: ${email}\n\nאשמח לסיוע דחוף. תודה!`;
+      } else if (topic === "ban") {
+        subject = "ערעור על חסימת חשבון - TikTok";
+        body = `שלום,\n\nנראה כי חשבוני נחסם בטעות.\n\nשם משתמש: sindyedri22\nאימייל ליצירת קשר: ${email}\n\nאבקש בדיקה מחודשת. תודה.`;
+      } else {
+        subject = "פניה כללית - TikTok";
+        body = `שלום רב,\n\nברצוני לפנות אליכם בנושא כללי שקשור לחשבון TikTok שלי.\n\nשם משתמש: sindyedri22\nמייל חוזר: ${email}\n\nתודה מראש על ההתייחסות.`;
+      }
+
+      const mailtoLink = `mailto:${recipients.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+    }
+  </script>
+</body>
+</html>
